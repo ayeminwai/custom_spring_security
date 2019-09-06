@@ -1,0 +1,57 @@
+{
+	"configuration": {
+		"name": "Default",
+		"appenders": {
+			"RollingFile": [
+				{
+					"name": "commons-log",
+					"fileName": "${catalina.home}/logs/commons.log",
+					"filePattern": "${catalina.home}/logs/wirecard-console-backup-%d{MM-dd-yy-HH-mm-ss}-%i.log.gz",
+					"PatternLayout": {
+						"pattern": "%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n"
+					},
+					"Policies": {
+						"SizeBasedTriggeringPolicy": {
+							"size": "5 MB"
+						}
+					},
+					"DefaultRolloverStrategy": {
+						"max": "5"
+					}
+				},
+				{
+					"name": "analytics-log",
+					"fileName": "${catalina.home}/logs/analytics.log",
+					"filePattern": "${catalina.home}/logs/wirecard-analytics-backup-%d{MM-dd-yy-HH-mm-ss}-%i.log.gz",
+					"PatternLayout": {
+						"pattern": "%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n"
+					},
+					"Policies": {
+						"SizeBasedTriggeringPolicy": {
+							"size": "5 MB"
+						}
+					},
+					"DefaultRolloverStrategy": {
+						"max": "5"
+					}
+				}
+			]
+		},
+		"loggers": {
+			"logger": {
+				"name": "com.wirecard.sg.sample.interceptor",
+				"level": "debug",
+				"additivity": "false",
+				"appender-ref": {
+					"ref": "analytics-log"
+				}
+			},
+			"root": {
+				"level": "warn",
+				"appender-ref": {
+					"ref": "commons-log"
+				}
+			}
+		}
+	}
+}

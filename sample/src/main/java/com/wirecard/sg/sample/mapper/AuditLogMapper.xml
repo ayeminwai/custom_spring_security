@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wirecard.sg.sample.mapper.AuditLogMapper">
+
+	<resultMap type="AuditLog" id="AuditLog" autoMapping="true">
+		<id property="auditLogId" column="audit_log_id" />
+		<association property="user" autoMapping="true"/>
+	</resultMap>
+	
+	<resultMap type="AuditLog" id="Audit_User" autoMapping="true">
+		<id property="auditLogId" column="audit_log_id"/>
+		<association property="user" autoMapping="true"/>
+	</resultMap>
+</mapper>
